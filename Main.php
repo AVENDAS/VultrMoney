@@ -42,4 +42,10 @@ class Main extends PluginBase implements Listener {
       $player->sendMessage ( $this->tag . " /돈순위 [페이지] - 돈순위를 봅니다." );
       $player->sendMessage ( $this->tag . " /돈설정 [닉네임] [금액] - [닉네임]의 돈을 [금액]으로 설정합니다." );   
       $player->sendMessage ( $this->tag . " /돈뺏기 [닉네임] [금액] - [닉네임]의 돈을 [금액]만큼 뺏습니다." );
+    } else {
+      $player->sendMessage ( $this->tag . " /내돈 - 자신의 돈을 확인" );      
+      $player->sendMessage ( $this->tag . " /돈순위 [페이지] - 돈순위를 봅니다." );        
+      $player->sendMessage ( $this->tag . " /돈순위 [페이지] - 돈순위를 봅니다." );        
+      $player->sendMessage ( $this->tag . " /돈순위 [페이지] - 돈순위를 봅니다." );  
+  }
 }
