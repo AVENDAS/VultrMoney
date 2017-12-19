@@ -42,6 +42,7 @@ class Main extends PluginBase implements Listener {
 		$this->GiveMoneyCommand = new GiveMoneyCommand ( $this );
 		$this->MyMoneyCommand = new MyMoneyCommand ( $this );
 		$this->SeeMoneyCommand = new SeeMoneyCommand ( $this );
+		$this->ReduceMoneyCommand = new ReduceMoneyCommand ( $this );
 	}
 	public function registerEvents() {
 		$this->MyMoneyEvent = new MyMoneyEvent ( $this );
@@ -50,6 +51,37 @@ class Main extends PluginBase implements Listener {
 		$this->GetRankByPlayerEvent = new GetRankByPlayer ( $this );
 		$this->GetRankEvent = new GetRankEvent ( $this );
 		$this->SetMoneyEvent = new SetMoneyEvent ( $this );
+	}
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) {
+		$cmd = $command->getName ();
+		if ($cmd == "내돈") {
+			$this->MyMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈보기") {
+			$this->SeeMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈지불") {
+			$this->PayMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈순위") {
+			$this->TopMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈설정") {
+			$this->SetMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈주기") {
+			$this->GiveMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
+		if ($cmd == "돈뺏기") {
+			$this->ReduceMoneyCommand->onCommand ( $sender, $command, $label, $args );
+			return;
+		}
 	}
 	public function getMessage(Player $player) {
 		if ($player->isOp ()) {
@@ -98,8 +130,8 @@ class Main extends PluginBase implements Listener {
 	}
 	public function getRankByPlayer(Player $player) {
 	}
-	public function msg (Player $player, $msg) {
- 		$player->sendMessage ($this->tag . " " . $msg );
+	public function msg(Player $player, $msg) {
+		$player->sendMessage ( $this->tag . " " . $msg );
 	}
 	/*
 	 * @return VirturlMoney
