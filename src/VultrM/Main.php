@@ -98,6 +98,9 @@ class Main extends PluginBase implements Listener {
 	}
 	public function getRankByPlayer(Player $player) {
 	}
+	public function msg (Player $player, $msg) {
+ 		$player->sendMessage ($this->tag . " " . $msg );
+	}
 	/*
 	 * @return VirturlMoney
 	 */
