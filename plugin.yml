@@ -1,0 +1,38 @@
+name: VultrMoney
+version: 0.0.1
+main: VultrM\Main
+api: 3.0.0-ALPHA7,3.0.0-ALPHA8,3.0.0-ALPHA9,3.0.0-ALPHA10
+
+commands:
+ 내돈:
+  description: Show My Money
+  permission: mymoney.command
+ 돈보기:
+  description: Show Another Money
+  permission: seemoney.command
+ 돈순위:
+  description: Show Top Money Player
+  permission: topmoney.command
+ 돈주기:
+  description: Give Money
+  permission: givemoney.command
+ 돈지불:
+  description: Pay Money
+  permission: paymoney.command
+ 돈뺏기:
+  description: Remove Money
+  permission: removemoney.command
+ 
+ permissions:
+  mymoney.command:
+   default: true
+  seemoney.command:
+   default: true
+  topmoney.command:
+   default: true
+  givemoney.command:
+   default: OP
+  paymoney.command:
+   default: true
+  removemoney.command:
+   default: OP
