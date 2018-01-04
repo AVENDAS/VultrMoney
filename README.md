@@ -1,7 +1,7 @@
 # VultrMoney
 PocketMine-MP 1.2.X Money Plugin
 
-[On offer Function]
+{On offer Function}
 -------------------------------------------------------
 VultrM::getInstance()->mymoney ($player);
 
