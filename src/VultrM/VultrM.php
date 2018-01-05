@@ -6,6 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use VultrM\commands\MyMoneyCommand;
@@ -51,6 +52,21 @@ class VultrM extends PluginBase implements Listener {
 		}
 		return true;
 	}
+	public function Join(PlayerJoinEvent $event) {
+		$player = $event->getPlayer ();
+		$name = $player->getName ();
+		if (! isset ( $this->moneyconfig [$name] )) {
+			$this->moneyconfig [$name] = 1000;
+			$this->save ();
+		}
+	}
+	public function save() {
+		$this->money->setAll ( $this->mDB );
+		$this->money->save ();
+	}
+	public function moneyconfig() {
+		return $this->mDB;
+	}
 	public function msg(Player $player, $msg) {
 		$player->sendMessage ( $this->tag . " " . $msg );
 	}
@@ -61,10 +77,12 @@ class VultrM extends PluginBase implements Listener {
 	public function reducemoney(Player $player, $m) {
 		$name = strtolower ( $player->getName () );
 		$this->mDB [$name] -= $m;
+		$this->save ();
 	}
 	public function addmoney(Player $player, $m) {
 		$name = strtolower ( $player->getName () );
 		$this->mDB [$name] += $m;
+		$this->save ();
 	}
 	public static function getInstance() {
 		return self::$instance;
