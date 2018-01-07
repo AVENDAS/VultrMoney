@@ -38,16 +38,40 @@ class VultrM extends PluginBase implements Listener {
 	public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool {
 		$cmd = $command->getName ();
 		if ($cmd == "내돈") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->MyMoneyCommand->onCommand ( $player, $label, $args );
 		} elseif ($cmd == "지불") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->GiveMoneyCommand->onCommand ( $player, $label, $args );
 		} elseif ($cmd == "돈순위") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->TopMoneyCommand->onCommand ( $player, $label, $args );
 		} elseif ($cmd == "돈보기") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->SeeMoneyCommand->onCommand ( $player, $label, $args );
 		} elseif ($cmd == "돈뺏기") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->ReduceMoneyCommand->onCommand ( $sender, $label, $args );
 		} elseif ($cmd == "돈주기") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
 			$this->AddMoneyCommand->onCommand ( $player, $label, $args );
 		}
 		return true;
