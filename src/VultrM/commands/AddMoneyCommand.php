@@ -12,6 +12,10 @@ class AddMoneyCommand {
 	}
 	public function onCommand(CommandSender $player, string $label, array $args): bool {
 		$name = strtolower ( $player->getName () );
+		if (! isset ( $args [0] ) or ! is_numeric ( $args [1] )) {
+			$this->owner->msg ( $player, "다시 입력하세요," );
+			return true;
+		}
 		if (isset ( $this->owner->mDB [$args [0]] )) {
 			if (is_numeric ( $args [1] )) {
 				$this->owner->addmoney ( $player, $args [1] );

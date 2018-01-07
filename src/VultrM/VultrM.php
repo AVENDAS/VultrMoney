@@ -74,6 +74,9 @@ class VultrM extends PluginBase implements Listener {
 		$name = strtolower ( $player->getName () );
 		return $this->mDB [$name];
 	}
+	public function seemoney($player) {
+		return $this->mDB [$player];
+	}
 	public function reducemoney(Player $player, $m) {
 		$name = strtolower ( $player->getName () );
 		$this->mDB [$name] -= $m;
