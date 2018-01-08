@@ -15,6 +15,7 @@ use VultrM\commands\AddMoneyCommand;
 use VultrM\commands\SeeMoneyCommand;
 use VultrM\commands\TopMoneyCommand;
 use VultrM\commands\ReduceMoneyCommand;
+use VultrM\commands\SetMoneyCommand;
 
 class VultrM extends PluginBase implements Listener {
 	public $money, $mDB;
@@ -30,6 +31,7 @@ class VultrM extends PluginBase implements Listener {
 		$this->SeeMoneyCommand = new SeeMoneyCommand ( $this );
 		$this->TopMoneyCommand = new TopMoneyCommand ( $this );
 		$this->ReduceMoneyCommand = new ReduceMoneyCommand ( $this );
+		$this->SetMoneyCommand = new SetMoneyCommand ( $this );
 		$this->getServer ()->getPluginManager ()->registerEvents ( $this, $this );
 	}
 	public function onLoad() {
@@ -73,6 +75,12 @@ class VultrM extends PluginBase implements Listener {
 				return true;
 			}
 			$this->AddMoneyCommand->onCommand ( $player, $label, $args );
+		} elseif ($cmd == "돈설정") {
+			if (! $player instanceof Player) {
+				$player->sendMessage ( $this->tag . " 서버안에서만 입력이 가능합니다." );
+				return true;
+			}
+			$this->SetMoneyCommand->onCommand ( $player, $label, $args );
 		}
 		return true;
 	}
@@ -97,6 +105,9 @@ class VultrM extends PluginBase implements Listener {
 	public function mymoney(Player $player) {
 		$name = strtolower ( $player->getName () );
 		return $this->mDB [$name];
+	}
+	public function setmoney($player, $m) {
+		$this->mDB [$player] = $m;
 	}
 	public function seemoney($player) {
 		return $this->mDB [$player];
