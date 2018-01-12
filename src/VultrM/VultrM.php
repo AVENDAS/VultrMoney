@@ -88,7 +88,7 @@ class VultrM extends PluginBase implements Listener {
 		$player = $event->getPlayer ();
 		$name = strtolower ( $player->getName () );
 		if (! isset ( $this->mDB [$name] )) {
-			$this->moneyconfig [$name] = 1000;
+			$this->mDB [$name] = 1000;
 			$this->save ();
 		}
 	}
