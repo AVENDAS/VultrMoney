@@ -1,5 +1,5 @@
 # VultrMoney
-PocketMine-MP 1.2.X Money Plugin
+PocketMine-MP Money Plugin
 
 On offer Function
 
